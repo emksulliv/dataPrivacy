@@ -9,7 +9,7 @@ dataPrivacy is built using the Django we framework. To use this app you must dow
 Once downloaded, clone dataPrivacy from this github repository and using a command line app cd into the root package directory, then the dataPrivacy directory. (your new directory should now be "/dataPrivacy/dataPrivacy". (you should see manage.py among the list of available files in this directory)
 
 to run - use the command 
-'''
+```
 python manage.py runserver
 
-'''
+```
