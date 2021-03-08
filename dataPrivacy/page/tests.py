@@ -17,4 +17,6 @@ class HomePageTest(TestCase):
         html = response.content.decode('utf8')
         self.assertTrue(html.startswith('<!DOCTYPE html>'))
         self.assertIn('<title>page</title>', html)
+        self.assertIn(
+            '<div id="myModal" class="modal fade" role="dialog">', html)
         self.assertTrue(html.endswith('</html>'))
