@@ -13,3 +13,13 @@ to run - use the command
 python manage.py runserver
 
 ```
+
+## How to run our Tests:
+Since we are only in the first iteration, unit testing does not test any logic. You can see our tests written in DataPrivacy/dataPrivacy/page/tests.py
+
+To run our unit tests you can remain in the same directory (/dataprivacy/dataprivacy/)where manage.py is still available to use. and run the command:
+```
+python manage.py test
+
+```
+our tests will begin once run.
