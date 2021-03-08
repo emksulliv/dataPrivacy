@@ -20,6 +20,6 @@ from django.urls import path, include
 ' ' means it will be the home page on startup"""
 
 urlpatterns = [
-    path('', include('page.urls')),
+    path('', include('page.urls'), name='home'),
     path('admin/', admin.site.urls),
 ]
