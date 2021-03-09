@@ -14,8 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+"""if we make the path 'page/', the webpage will have to be /page/ to reach it
+' ' means it will be the home page on startup"""
 
 urlpatterns = [
+    path('', include('page.urls'), name='home'),
     path('admin/', admin.site.urls),
 ]
