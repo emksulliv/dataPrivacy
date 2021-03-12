@@ -1,1 +1,2 @@
-# No current pip install requirements, add as necessary for proper testing.
+# django for django workflows
+django-workflows-unistra
