@@ -1,2 +1,2 @@
 # django for django workflows
-django-workflows-unistra
+django
