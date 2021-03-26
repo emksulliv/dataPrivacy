@@ -1,2 +1,0 @@
-# django for django workflows
-django
