@@ -1,2 +1,4 @@
 # django for django workflows
-django
+Django>=3.1.7
+gunicorn
+django-heroku
