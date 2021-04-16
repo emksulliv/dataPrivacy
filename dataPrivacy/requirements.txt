@@ -1,0 +1,6 @@
+# django for django workflows
+Django>=3.1.7
+gunicorn
+django-heroku
+django-allauth
+pylint-django

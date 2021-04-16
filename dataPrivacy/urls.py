@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 
 """if we make the path 'page/', the webpage will have to be /page/ to reach it
 ' ' means it will be the home page on startup"""
@@ -22,4 +23,7 @@ from django.urls import path, include
 urlpatterns = [
     path('', include('page.urls'), name='home'),
     path('admin/', admin.site.urls),
+    path('accounts/profile/', include(('accounts.urls', 'accounts'), namespace='accounts')),
+    path('accounts/', include('allauth.urls')),
+    url(r'^accounts/', include('allauth.urls')),
 ]
