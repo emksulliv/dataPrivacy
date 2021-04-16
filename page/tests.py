@@ -7,16 +7,7 @@ from page.views import index
 
 
 class HomePageTest(TestCase):
-    def test_root_url_resolves_to_index_page(self):
-        found = resolve('/')
-        self.assertEqual(found.func, index)
 
-    def test_home_page_returns_correct_html(self):
-        request = HttpRequest()
-        response = index(request)
-        html = response.content.decode('utf8')
-        self.assertTrue(html.startswith('<!DOCTYPE html>'))
-        self.assertIn('<title>page</title>', html)
-        self.assertIn(
-            '<div id="myModal" class="modal fade" role="dialog">', html)
-        self.assertTrue(html.endswith('</html>'))
+    def test_home_page(self):
+        response = self.client.get('https://dataprivacy.herokuapp.com/')
+        self.assertEqual(response.status_code, 200)
