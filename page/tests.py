@@ -42,6 +42,3 @@ class DBTest(TestCase):
         bob = User.objects.get(user_name="Bob")
         jane = User.objects.get(user_name="Jane")
         self.assertTrue(bob)
-    def test_home_page(self):
-        response = self.client.get('https://dataprivacy.herokuapp.com/')
-        self.assertEqual(response.status_code, 200)
