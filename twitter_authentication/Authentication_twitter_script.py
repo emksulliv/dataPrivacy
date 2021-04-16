@@ -5,8 +5,8 @@ import base64
 
 
 def main():
-    client_key = "place holder"
-    client_secret = "place holder"
+    client_key = "API_KEY_TWTR"
+    client_secret = "API_SECRET_KEY_TWTR"
 
     key_secret = '{}:{}'.format(client_key, client_secret).encode('ascii')
 
