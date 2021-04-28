@@ -33,3 +33,6 @@ python manage.py test
 ```
 
 our tests will begin once run.
+
+
+pip installs: pip install requests, pip install allauth, pip install django-allauth, pip install google-api-python-client, pip install google-auth-oauthlib
