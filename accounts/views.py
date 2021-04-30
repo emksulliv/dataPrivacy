@@ -36,8 +36,10 @@ def index(request):
         creds = get_cred(user)
         #Build the v1 People API with given credentials
         peopleService = build('people', 'v1', credentials=creds)
-        #Call the People API otherContacts() method, which will return a JSON containing emails, names, and phone numbers
+        
+        #Call the People API otherContacts() method, which will return a dict containing emails, names, and phone numbers
         otherContactsDump = peopleService.otherContacts().list(readMask='emailAddresses,names,phoneNumbers').execute()
+        #Convert dict to JSON
         otherContacts = json.dumps(otherContactsDump, indent = 4)  
 
         #Call the People API connections() method, which will try to scrape every available personFields (unfortunately no easy 'all')
@@ -45,5 +47,6 @@ def index(request):
         contacts = json.dumps(contactsDump, indent = 4)  
         return render(request, 'accounts/index.html', {'contacts': json2html.convert(json=contacts), 'otherContacts' : json2html.convert(json=otherContacts)})
     else:
+        #If we are not logged in return to the home screen.
         print("Not authenticated")
         return HttpResponseRedirect(reverse('home:index'))
