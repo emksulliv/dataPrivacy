@@ -30,9 +30,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#Overriding the social account adapter for custom redirect
+SOCIALACCOUNT_ADAPTER = 'page.adapter.socialAccountAdapter'
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     'accounts',
 ]
 
+#Needed for allauth
 SITE_ID = 1
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

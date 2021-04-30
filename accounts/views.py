@@ -1,12 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-
+from django.http import HttpResponse, HttpRequest
 from allauth.socialaccount.models import SocialToken, SocialApp
 from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
-
+from django.contrib.auth.decorators import login_required
+import json
+from json2html import *
 
 def get_cred(user):
     token = SocialToken.objects.get(account__user=user, account__provider='google')
@@ -28,17 +29,21 @@ def get_cred(user):
     return creds
     
     
-
+@login_required
 def index(request):
-    user = request.user
-    creds = get_cred(user)
-    #Build the v1 People API with given credentials
-    peopleService = build('people', 'v1', credentials=creds)
-    #Call the People API otherContacts() method, which will return a JSON containing emails, names, and phone numbers
-    results1 = peopleService.otherContacts().list(readMask='emailAddresses,names,phoneNumbers').execute()
-    otherContacts = results1.get('otherContacts', [])
-    #Call the People API connections() method, which will try to scrape every available personFields (unfortunately no easy 'all')
-    results2 = peopleService.people().connections().list(resourceName='people/me', personFields='addresses,ageRanges,biographies,birthdays,calendarUrls,clientData,emailAddresses,events,externalIds,genders,imClients,interests,locales,locations,miscKeywords,names,nicknames,occupations,organizations,phoneNumbers,photos,relations,sipAddresses,skills,urls,userDefined').execute()
-    contacts = results2.get('contacts', [])
+    if request.user.is_authenticated:
+        user = request.user
+        creds = get_cred(user)
+        #Build the v1 People API with given credentials
+        peopleService = build('people', 'v1', credentials=creds)
+        #Call the People API otherContacts() method, which will return a JSON containing emails, names, and phone numbers
+        otherContactsDump = peopleService.otherContacts().list(readMask='emailAddresses,names,phoneNumbers').execute()
+        otherContacts = json.dumps(otherContactsDump, indent = 4)  
 
-    return render(request, 'accounts/index.html', context={'otherContacts' : otherContacts, 'contacts' : contacts})
+        #Call the People API connections() method, which will try to scrape every available personFields (unfortunately no easy 'all')
+        contactsDump = peopleService.people().connections().list(resourceName='people/me', personFields='addresses,ageRanges,biographies,birthdays,calendarUrls,clientData,emailAddresses,events,externalIds,genders,imClients,interests,locales,locations,miscKeywords,names,nicknames,occupations,organizations,phoneNumbers,photos,relations,sipAddresses,skills,urls,userDefined').execute()
+        contacts = json.dumps(contactsDump, indent = 4)  
+        return render(request, 'accounts/index.html', {'contacts': json2html.convert(json=contacts), 'otherContacts' : json2html.convert(json=otherContacts)})
+    else:
+        print("Not authenticated")
+        return HttpResponseRedirect(reverse('home:index'))

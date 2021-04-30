@@ -19,9 +19,9 @@ from django.conf.urls import url
 
 """if we make the path 'page/', the webpage will have to be /page/ to reach it
 ' ' means it will be the home page on startup"""
-
+app_name = 'main'
 urlpatterns = [
-    path('', include('page.urls'), name='home'),
+    path('', include(('page.urls'), namespace='home')),
     path('admin/', admin.site.urls),
     path('accounts/profile/', include(('accounts.urls', 'accounts'), namespace='accounts')),
     path('accounts/', include('allauth.urls')),
