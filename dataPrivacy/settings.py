@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # Add more providers here ex: 'allauth.socialaccount.providers.amazon'
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 
     'page',
     'accounts',
@@ -61,6 +62,27 @@ SOCIALACCOUNT_PROVIDERS = {
             'https://www.googleapis.com/auth/contacts.other.readonly', 
             'https://www.googleapis.com/auth/user.addresses.read',
         ],
+    },
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name'
+        ],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v7.0',
     }
 }
 
