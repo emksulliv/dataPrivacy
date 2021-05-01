@@ -4,14 +4,16 @@ from django.http import HttpRequest
 from django.shortcuts import render
 from page.views import index
 from page.models import User
+import requests
 
 # Create your tests here.
 
 
 class HomePageTest(TestCase):
-    def test_root_url_resolves_to_index_page(self):
-        found = resolve('/')
-        self.assertEqual(found.func, index)
+
+    def test_home_page(self):
+        response = self.client.get('https://dataprivacy.herokuapp.com/')
+        self.assertEqual(response.status_code, 200)
 
     def test_home_page_returns_correct_html(self):
         request = HttpRequest()
@@ -23,6 +25,25 @@ class HomePageTest(TestCase):
             '<div id="myModal" class="modal fade" role="dialog">', html)
         self.assertTrue(html.endswith('</html>'))
 
+    def test_front_end(self):
+        r = requests.get('https://dataprivacy.herokuapp.com/')
+        page_src = r.text
+
+        if page_src.find('Helping you become more literate') < 0:
+            self.fail("Can't find descriptor text in jumbotron")
+
+        if page_src.find('Twitter') < 0:
+            self.fail("Can't find descriptor text in jumbotron")
+
+        if page_src.find('Google') < 0:
+            self.fail("Can't find descriptor text in jumbotron")
+
+        if page_src.find('Facebook') < 0:
+            self.fail("Can't find descriptor text in jumbotron")
+
+        if page_src.find('Amazon') < 0:
+            self.fail("Can't find descriptor text in jumbotron")
+
 
 class LoginTest(TestCase):
     def test_check_login(self):
@@ -31,6 +52,7 @@ class LoginTest(TestCase):
         html = response.content.decode('utf8')
         self.assertTrue(html.startswith('<!DOCTYPE html>'))
         self.assertIn('<title>Login</title>', html)
+
 
 class DBTest(TestCase):
     def setUp(self):
