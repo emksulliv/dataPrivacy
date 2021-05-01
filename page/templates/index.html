@@ -91,21 +91,8 @@
             <a href="https://www.google.com/" class="btn btn-light my-2">Twitter</a>
             <a href="{% provider_login_url "google" %}"class="btn btn-light my-2">Google</a>
             <a href="#" class="btn btn-light my-2">Facebook</a>
-            <a href="#" class="btn btn-light my-2">Amazon</a>
+            <a href="#" id="LoginWithAmazon" class="btn btn-light my-2">Amazon</a>
         </section>
-
-                <h1 class="jumbotron-heading">Data Privacy</h1>
-                <p class="lead text-muted">Helping you become more literate in the data you share online / What do your apps know about you?</p>
-                <p>
-                  <!-- btn-outline-info to be blue, btn-outline-primary to be gray -->
-                  <button type="button" class="btn btn-outline-info my-2" data-toggle="modal" data-target="#myModal">Learn More</button>
-                </p>
-              <!-- SAMPLE ON GOOGLE BUTTON(takes us to google.com -> meant to show how to link a URL here) -->
-              <a href="https://www.google.com/" class="btn btn-light my-2">Twitter</a>
-              <a href="#" class="btn btn-light my-2">Google</a>
-              <a href="#" class="btn btn-light my-2">Facebook</a>
-              <a href="LoginWithAmazon" class="btn btn-light my-2">Amazon</a>
-            </section>
             
     </main>
 
@@ -164,28 +151,38 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Optional JavaScript -->
     <script type="text/javascript">
         document.getElementById('LoginWithAmazon').onclick = function() {
-            options = {response_type: 'code', scope: 'profile', pkce = 'true'};
-            /*
+            options = {response_type: 'code', scope: 'profile', pkce: true};
+            
             amazon.Login.authorize(options, function(response) {
                 if ( response.error ) {
                     alert('oauth error ' + response.error);
                     return;
                 }
+                //window.console.log(response)
+                
                 amazon.Login.retrieveToken(response.code, function(response) {
                     if ( response.error ) {
                         alert('oauth error ' + response.error);
                         return;
                     }
                     alert('Access Token: ' + response.access_token);
+                    amazon.Login.retrieveProfile(access_token, function(response) {
+                        if ( response.success ) {
+                            alert('Hello, ' + response.profile.Name);
+                            alert('Your e-mail address is ' + response.profile.PrimaryEmail);
+                            alert('Your unique ID is ' + response.profile.CustomerId);
+                        }
+                    });
                 });
-            });*/
+            });
+            /*
             amazon.Login.authorize(options,
-                'https://dataprivacy.herokuapp.com/');
-            return false;
+                'http://127.0.0.1:8000/');
+            return false;*/
         };
     </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

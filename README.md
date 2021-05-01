@@ -34,6 +34,7 @@ python manage.py test
 
 our tests will begin once run.
 
+Amazon login tests cannot currently be automated, to manually test them login to amazon on the website. If a popup containing an access token starting with the string "Atza", then the access token test succeeded.
 
 pip installs (included in our requirements.txt)->: pip install requests, pip install allauth, pip install django-allauth, pip install google-api-python-client, pip install google-auth-oauthlib
 
