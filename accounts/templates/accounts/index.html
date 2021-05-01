@@ -1,34 +1,69 @@
-<!doctype html>{% load static %}
-<html lang="en">
-
-{% load static %}
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--use bootstrap CDN by adding the below 2 lines-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Cat Facts</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/all.css' %}">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <style>
-
-
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>page</title>
 </head>
 <body>
+    <!--the body of the page, this will contain all the stuff we SEE-->
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-muted">Data Privacy is a website created to complete UMBC's Spring 2021 CMSC 447: Software Engineering course. This website was devloped as a group project. All members are Student's completing degrees at UMBC.</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Creators</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Andrew Haberman</a></li>
+                            <li><a href="#" class="text-white">Emily Sullivan</a></li>
+                            <li><a href="#" class="text-white">Gregory Marinaki</a></li>
+                            <li><a href="#" class="text-white">Jason Painter</a></li>
+                            <li><a href="#" class="text-white">Paul Wrona</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+            <div class="container d-flex justify-content-between">
+                <a href="{% url 'home:index' %}" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" stroke="currentColor" stroke-width=".5" class="bi bi-lock" stroke-linecap="round" stroke-linejoin="round" class="mr-2" viewBox="0 0 16 16">
+                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+                    </svg>
+                    <strong>Data Privacy</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-<div class="container">
-    Google Garbage <br>
-    {{otherContacts}} <br>
-    {{contacts}}
-    
-</div>
+    <main role="main">
+        <!-- the style part of section modifying height will bring the background to the bottom -->
+        <section class="jumbotron text-center" style="height:100vh;">
+            <!-- inclusion of -full-bg will lengthen bootstrap bg of jumbotron to full length of page -->
+            <div class="container">
+                Google Garbage
+                <br>
+                {{contacts|safe}}
+                <br>
+                {{otherContacts|safe}}
+            </div>
+        </section>
 
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>

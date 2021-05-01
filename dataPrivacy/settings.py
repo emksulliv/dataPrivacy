@@ -16,6 +16,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -28,9 +29,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#Overriding the social account adapter for custom redirect
+SOCIALACCOUNT_ADAPTER = 'page.adapter.socialAccountAdapter'
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
     'accounts',
 ]
 
+#Needed for allauth
 SITE_ID = 1
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

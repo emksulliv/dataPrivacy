@@ -1,84 +1,85 @@
 <!DOCTYPE html>
+{% load socialaccount %}
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <!--use bootstrap CDN by adding the below 2 lines-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>page</title>
-  </head>
-  <body>
+</head>
+<body>
 
     <!--the body of the page, this will contain all the stuff we SEE-->
     <header>
         <div class="collapse bg-dark" id="navbarHeader">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-8 col-md-7 py-4">
-                <h4 class="text-white">About</h4>
-                <p class="text-muted">Data Privacy is a website created to complete UMBC's Spring 2021 CMSC 447: Software Engineering course. This website was devloped as a group project. All members are Student's completing degrees at UMBC.</p>
-              </div>
-              <div class="col-sm-4 offset-md-1 py-4">
-                <h4 class="text-white">Creators</h4>
-                <ul class="list-unstyled">
-                  <li><a href="#" class="text-white">Andrew Haberman</a></li>
-                  <li><a href="#" class="text-white">Emily Sullivan</a></li>
-                  <li><a href="#" class="text-white">Gregory Marinaki</a></li>
-                  <li><a href="#" class="text-white">Jason Painter</a></li>
-                  <li><a href="#" class="text-white">Paul Wrona</a></li>
-                </ul>
-              </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-muted">Data Privacy is a website created to complete UMBC's Spring 2021 CMSC 447: Software Engineering course. This website was devloped as a group project. All members are Student's completing degrees at UMBC.</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Creators</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Andrew Haberman</a></li>
+                            <li><a href="#" class="text-white">Emily Sullivan</a></li>
+                            <li><a href="#" class="text-white">Gregory Marinaki</a></li>
+                            <li><a href="#" class="text-white">Jason Painter</a></li>
+                            <li><a href="#" class="text-white">Paul Wrona</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
         <div class="navbar navbar-dark bg-dark box-shadow">
-          <div class="container d-flex justify-content-between">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" stroke="currentColor" stroke-width=".5" class="bi bi-lock" stroke-linecap="round" stroke-linejoin="round" class="mr-2" viewBox="0 0 16 16">
-                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
-                  </svg>
-              <strong>Data Privacy</strong>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          </div>
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" stroke="currentColor" stroke-width=".5" class="bi bi-lock" stroke-linecap="round" stroke-linejoin="round" class="mr-2" viewBox="0 0 16 16">
+                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+                    </svg>
+                    <strong>Data Privacy</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
         </div>
-      </header>
+    </header>
 
     <main role="main">
-            <!-- the style part of section modifying height will bring the background to the bottom -->
-            <section class="jumbotron text-center" style="height:100vh;">
-                <!-- inclusion of -full-bg will lengthen bootstrap bg of jumbotron to full length of page -->
+        <!-- the style part of section modifying height will bring the background to the bottom -->
+        <section class="jumbotron text-center" style="height:100vh;">
+            <!-- inclusion of -full-bg will lengthen bootstrap bg of jumbotron to full length of page -->
 
-                <h1 class="jumbotron-heading">Data Privacy</h1>
-                <p class="lead text-muted">Helping you become more literate in the data you share online / What do your apps know about you?</p>
-                <p>
-                  <!-- btn-outline-info to be blue, btn-outline-primary to be gray -->
-                  <button type="button" class="btn btn-outline-info my-2" data-toggle="modal" data-target="#myModal">Learn More</button>
-                </p>
-              <!-- SAMPLE ON GOOGLE BUTTON(takes us to google.com -> meant to show how to link a URL here) -->
-              <a href="https://www.google.com/" class="btn btn-light my-2">Twitter</a>
-              <a href="#" class="btn btn-light my-2">Google</a>
-              <a href="#" class="btn btn-light my-2">Facebook</a>
-              <a href="#" class="btn btn-light my-2">Amazon</a>
-            </section>
-            
+            <h1 class="jumbotron-heading">Data Privacy</h1>
+            <p class="lead text-muted">Helping you become more literate in the data you share online / What do your apps know about you?</p>
+            <p>
+                <!-- btn-outline-info to be blue, btn-outline-primary to be gray -->
+                <button type="button" class="btn btn-outline-info my-2" data-toggle="modal" data-target="#myModal">Learn More</button>
+            </p>
+            <!-- SAMPLE ON GOOGLE BUTTON(takes us to google.com -> meant to show how to link a URL here) -->
+            <a href="https://www.google.com/" class="btn btn-light my-2">Twitter</a>
+            <a href="{% provider_login_url "google" %}"class="btn btn-light my-2">Google</a>
+            <a href="#" class="btn btn-light my-2">Facebook</a>
+            <a href="#" class="btn btn-light my-2">Amazon</a>
+        </section>
+
     </main>
 
-   <!-- Modal -->
-   <div id="myModal" class="modal fade" role="dialog">
-       <div class="modal-dialog modal-lg">
-           <!-- Modal Content -->
-           <div class="modal-content">
-               <div class="modal-header">
-                   
-                   <h4 class="modal-title">What does this all mean?</h4>
-                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-               </div>
-               <div class="modal-body">
-                   <h5>Accessing Data: So how does this work?</h5>
-                   <div class="container-sm">                   
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal Content -->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">What does this all mean?</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h5>Accessing Data: So how does this work?</h5>
+                    <div class="container-sm">
                         <p>Ya know when a personality quiz asks for access to your facebook profile? What does that really even mean for you and your data when you accept that access?</p>
                         <p>Or here's another one... Know how some apps give you the option to either create an account with that specific application or (and usually the faster, easier entry point option) you can instead connect your Facebook account.</p>
                         <p>While easier and definitely faster, there is a catch. Whenever you link your Facebook account to a third party app, you're giving that app permission to access information from some parts of your personal profile.</p>
@@ -87,45 +88,45 @@
                     </div>
 
                     <h5>Where does my data go?</h5>
-                    <div class="container-sm">                   
+                    <div class="container-sm">
                         <p>Wherever the developer wants! No seriously. The use of data collected by third party apps is rarely disclosed.</p>
                         <p>While most social media will have a strict "Platform Privacy" that outlines what developers of third party apps can and can't do with regards to user data, these will vary from company to company </p>
                         <br>
-  
+
                     </div>
                     <h5>How can I control the information third party apps have access to?</h5>
-                    <div class="container-sm">                   
+                    <div class="container-sm">
                         <p>There are a few options here...</p>
                         <ul>
                             <li>Read!</li>
-                                <div class="container-sm">
-                                    <p class="font-weight-light">when providing access to a third-part app. You can usually review the info you are providing. If you are not comfortable with giving this data - then do not connect your social media accounts.</p>
-                                </div>
+                            <div class="container-sm">
+                                <p class="font-weight-light">when providing access to a third-part app. You can usually review the info you are providing. If you are not comfortable with giving this data - then do not connect your social media accounts.</p>
+                            </div>
 
-                                <li>Secure Your Info!</li>
-                                <div class="container-sm">
-                                    <p class="font-weight-light">You can change the permissions you give a third-party app at any time. Social Media services will usually have a section in their settings that will list the third party apps currently having access to your data. You can remove apps from these lists to take away access to your data completely or take away certain data access rights (just access to photos, just friends list, etc)</p>
-                                </div>
+                            <li>Secure Your Info!</li>
+                            <div class="container-sm">
+                                <p class="font-weight-light">You can change the permissions you give a third-party app at any time. Social Media services will usually have a section in their settings that will list the third party apps currently having access to your data. You can remove apps from these lists to take away access to your data completely or take away certain data access rights (just access to photos, just friends list, etc)</p>
+                            </div>
 
-                                <li>Be confident in your info!</li>
-                                <div class="container-sm">
-                                    <p class="font-weight-light">You can also choose to pick through your own profile and remove data you are not comfortable with third parties getting access to.</p>
-                                </div>
+                            <li>Be confident in your info!</li>
+                            <div class="container-sm">
+                                <p class="font-weight-light">You can also choose to pick through your own profile and remove data you are not comfortable with third parties getting access to.</p>
+                            </div>
                         </ul>
-  
+
                     </div>
-               </div>
-               <div class="modal-footer">
-                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-               </div>
-           </div>
-       </div>
-   </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
