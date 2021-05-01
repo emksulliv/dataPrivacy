@@ -10,6 +10,21 @@
 </head>
 <body>
 
+    <!--Load the Login with Amazon SDK-->
+    <div id="amazon-root"></div>
+        <script type="text/javascript">
+
+            window.onAmazonLoginReady = function() {
+            amazon.Login.setClientId('amzn1.application-oa2-client.85649ad3188a4224bdac77cdf87ea029');
+            };
+            (function(d) {
+            var a = d.createElement('script'); a.type = 'text/javascript';
+            a.async = true; a.id = 'amazon-login-sdk';
+            a.src = 'https://assets.loginwithamazon.com/sdk/na/login1.js';
+            d.getElementById('amazon-root').appendChild(a);
+            })(document);
+        </script>
+    
     <!--the body of the page, this will contain all the stuff we SEE-->
     <header>
         <div class="collapse bg-dark" id="navbarHeader">
@@ -79,8 +94,6 @@
             <a href="#" class="btn btn-light my-2">Amazon</a>
         </section>
 
-<<<<<<< HEAD
-=======
                 <h1 class="jumbotron-heading">Data Privacy</h1>
                 <p class="lead text-muted">Helping you become more literate in the data you share online / What do your apps know about you?</p>
                 <p>
@@ -94,7 +107,6 @@
               <a href="LoginWithAmazon" class="btn btn-light my-2">Amazon</a>
             </section>
             
->>>>>>> readded loogin with amazon button according to new formatting, started amazon oauth python script
     </main>
 
     <!-- Modal -->
@@ -152,22 +164,28 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Optional JavaScript -->
     <script type="text/javascript">
         document.getElementById('LoginWithAmazon').onclick = function() {
-            options = {response_type: 'code', scope: 'profile'};
+            options = {response_type: 'code', scope: 'profile', pkce = 'true'};
+            /*
             amazon.Login.authorize(options, function(response) {
                 if ( response.error ) {
                     alert('oauth error ' + response.error);
                     return;
                 }
-                /* Pass response.code to your server, and use it to request refresh and
-                access token. */
-            });
-            /*amazon.Login.authorize(options,
-                'http://127.0.0.1:8000/');
-            return false;*/
+                amazon.Login.retrieveToken(response.code, function(response) {
+                    if ( response.error ) {
+                        alert('oauth error ' + response.error);
+                        return;
+                    }
+                    alert('Access Token: ' + response.access_token);
+                });
+            });*/
+            amazon.Login.authorize(options,
+                'https://dataprivacy.herokuapp.com/');
+            return false;
         };
     </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
