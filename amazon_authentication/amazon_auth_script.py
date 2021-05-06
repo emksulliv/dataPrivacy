@@ -1,7 +1,7 @@
 import pycurl
 import urllib
 import json
-import StringIO
+import io
 import requests
 
 def getAccessToken():
@@ -27,7 +27,7 @@ def getAccessToken():
 
 
 def getProfile():
-    b = StringIO.StringIO()
+    b = io.StringIO.StringIO()
 
     # verify that the access token belongs to us
     c = pycurl.Curl()
@@ -43,7 +43,7 @@ def getProfile():
         raise BaseException("Invalid Token")
 
     # exchange the access token for user profile
-    b = StringIO.StringIO()
+    b = io.StringIO.StringIO()
 
     c = pycurl.Curl()
     c.setopt(pycurl.URL, "https://api.amazon.com/user/profile")
