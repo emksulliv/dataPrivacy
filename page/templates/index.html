@@ -163,20 +163,19 @@
                     return;
                 }
                 //window.console.log(response)
-                
                 amazon.Login.retrieveToken(response.code, function(response) {
                     if ( response.error ) {
                         alert('oauth error ' + response.error);
                         return;
                     }
-                    alert('Access Token: ' + response.access_token);
-                    amazon.Login.retrieveProfile(access_token, function(response) {
+                    //alert('Access Token: ' + response.access_token);
+                    amazon.Login.retrieveProfile(response.access_token, function(response) {
                         if ( response.success ) {
-                            alert('Hello, ' + response.profile.Name);
-                            alert('Your e-mail address is ' + response.profile.PrimaryEmail);
-                            alert('Your unique ID is ' + response.profile.CustomerId);
+                            alert('Test');
+                            alert('Your name is: ' + response.profile.Name);
+                            alert('Your e-mail address is: ' + response.profile.PrimaryEmail);
+                            alert('Your unique ID is: ' + response.profile.CustomerId);
                         }
-                        
                     });
                 });
             });

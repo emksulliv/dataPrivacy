@@ -3,11 +3,12 @@ import urllib
 import json
 import io
 import requests
+import os
 
 def getAccessToken():
     
-    client_id = "CLIENT_ID_AMZN"
-    client_secret = "CLIENT_SECRET_AMZN"
+    client_id = str(os.environ.get("API_ID_AMZN"))
+    client_secret = str(os.environ.get("API_SECRET_KEY_AMZN"))
     base_url = "https://api.amazon.com/auth/o2/token"
 
     auth_code = ""

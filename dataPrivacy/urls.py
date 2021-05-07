@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
+from page import amazon_auth_script
 
 """if we make the path 'page/', the webpage will have to be /page/ to reach it
 ' ' means it will be the home page on startup"""
@@ -26,4 +27,7 @@ urlpatterns = [
     path('accounts/profile/', include(('accounts.urls', 'accounts'), namespace='accounts')),
     path('accounts/', include('allauth.urls')),
     url(r'^accounts/', include('allauth.urls')),
+    
+    path('', amazon_auth_script.getAccessToken, name='amzn_auth_script'),
+    path('', amazon_auth_script.getProfile, name='amzn_profile_script')
 ]
