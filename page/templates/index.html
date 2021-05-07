@@ -171,10 +171,8 @@
                     //alert('Access Token: ' + response.access_token);
                     amazon.Login.retrieveProfile(response.access_token, function(response) {
                         if ( response.success ) {
-                            alert('Test');
-                            alert('Your name is: ' + response.profile.Name);
-                            alert('Your e-mail address is: ' + response.profile.PrimaryEmail);
-                            alert('Your unique ID is: ' + response.profile.CustomerId);
+                            alert('Your name is: ' + response.profile.Name + '\nYour e-mail address is: ' + response.profile.PrimaryEmail + '\nYour unique ID is: ' + response.profile.CustomerId);
+                
                         }
                     });
                 });
