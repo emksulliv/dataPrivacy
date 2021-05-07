@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>page</title>
 </head>
-<body>
+<body style="background-color:#e9ecef;">
 
     <!--the body of the page, this will contain all the stuff we SEE-->
     <header>
@@ -47,7 +47,7 @@
         </div>
     </header>
 
-    <main role="main">
+    <main role="main"  style="background-color:#e9ecef;">
         <!-- the style part of section modifying height will bring the background to the bottom -->
         <section class="jumbotron text-center" style="height:100vh;">
             <!-- inclusion of -full-bg will lengthen bootstrap bg of jumbotron to full length of page -->
@@ -58,7 +58,7 @@
                 <!-- btn-outline-info to be blue, btn-outline-primary to be gray -->
                 <button type="button" class="btn btn-outline-info my-2" data-toggle="modal" data-target="#myModal">Learn More</button>
             </p>
-            <!-- SAMPLE ON GOOGLE BUTTON(takes us to google.com -> meant to show how to link a URL here) -->
+
             <a href="{% url 'script' %}" class="btn btn-light my-2">Twitter</a>
             <a href="{% provider_login_url "google" %}"class="btn btn-light my-2">Google</a>
             <a href="#" class="btn btn-light my-2">Facebook</a>
