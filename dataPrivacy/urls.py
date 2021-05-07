@@ -30,7 +30,6 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     
     path('', amazon_auth_script.getAccessToken, name='amzn_auth_script'),
-    path('', amazon_auth_script.getProfile, name='amzn_profile_script'),
     path('', twitter_search.button),
     path('', twitter_search.search_script, name='script'),
 ]
