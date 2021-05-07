@@ -32,17 +32,14 @@ class HomePageTest(TestCase):
         if page_src.find('Helping you become more literate') < 0:
             self.fail("Can't find descriptor text in jumbotron")
 
-        if page_src.find('Twitter') < 0:
-            self.fail("Can't find descriptor text in jumbotron")
+        if page_src.find('Twitter') > 0:
+            self.fail("Still has old twitter button instead of logo")
 
-        if page_src.find('Google') < 0:
-            self.fail("Can't find descriptor text in jumbotron")
+        if page_src.find('Google') > 0:
+            self.fail("Still has old Google button instead of logo")
 
-        if page_src.find('Facebook') < 0:
-            self.fail("Can't find descriptor text in jumbotron")
-
-        if page_src.find('Amazon') < 0:
-            self.fail("Can't find descriptor text in jumbotron")
+        if page_src.find('Amazon') > 0:
+            self.fail("Still has old Amazon button instead of logo")
 
 
 class LoginTest(TestCase):
