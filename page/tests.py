@@ -32,18 +32,6 @@ class HomePageTest(TestCase):
         if page_src.find('Helping you become more literate') < 0:
             self.fail("Can't find descriptor text in jumbotron")
 
-        if page_src.find('Twitter') < 0:
-            self.fail("Can't find descriptor text in jumbotron")
-
-        if page_src.find('Google') < 0:
-            self.fail("Can't find descriptor text in jumbotron")
-
-        if page_src.find('Facebook') < 0:
-            self.fail("Can't find descriptor text in jumbotron")
-
-        if page_src.find('Amazon') < 0:
-            self.fail("Can't find descriptor text in jumbotron")
-
 
 class LoginTest(TestCase):
     def test_check_login(self):
