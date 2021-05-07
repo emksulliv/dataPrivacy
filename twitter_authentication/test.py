@@ -10,13 +10,14 @@ def test():
     access_token = Authentication_twitter_script.main()
 
     search_headers = {'Authorization': 'Bearer {}'.format(access_token)}
-
+    val = input("enter search parameters: ")
     search_params = {
-        'q': 'NASA',
-        # 'lang': English,
+        'q': val,
         'result_type': 'recent',
-        'count': 5
+        'count': 1
     }
+    fields = "created_at,description,pinned_tweet_id"
+    search_params2 = {"usernames": "Andrew", "user.fields": fields}
 
     search_url = '{}1.1/search/tweets.json'.format(base_url)
     # search_url = '{}1.1/users/search.json'.format(base_url)
@@ -38,6 +39,8 @@ def test():
         print("printing search results...")
         for x in tweet_data['statuses']:
             print(x['text'] + '\n')
+            print(x['user'])
+            print(x['coordinates'])
 
 
 test()
