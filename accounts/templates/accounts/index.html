@@ -1,5 +1,13 @@
 <!DOCTYPE html>
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static '/css/table.css' %}">
 <html>
+<style>
+    ul.no-bullets {
+        list-style-type: none;
+    }
+</style>
 <head>
     <meta charset="utf-8">
     <!--use bootstrap CDN by adding the below 2 lines-->
@@ -7,7 +15,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>page</title>
 </head>
-<body>
+<body style=background-color: #e9ecef;">
     <!--the body of the page, this will contain all the stuff we SEE-->
     <header>
         <div class="collapse bg-dark" id="navbarHeader">
@@ -50,10 +58,9 @@
         <section class="jumbotron text-center" style="height:100vh;">
             <!-- inclusion of -full-bg will lengthen bootstrap bg of jumbotron to full length of page -->
             <div class="container">
-                Google Garbage
-                <br>
-                {{contacts|safe}}
-                <br>
+                Contacts <br>
+                {{contacts|safe}} <br>
+                Other Contacts <br>
                 {{otherContacts|safe}}
             </div>
         </section>
