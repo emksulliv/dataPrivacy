@@ -1,7 +1,3 @@
-import pycurl
-import urllib
-import json
-import io
 import requests
 import os
 
@@ -25,33 +21,3 @@ def getAccessToken():
     }
 
     auth_resp = requests.post(base_url, headers=auth_headers, data=auth_data)
-
-
-def getProfile():
-    b = io.StringIO.StringIO()
-
-    # verify that the access token belongs to us
-    c = pycurl.Curl()
-    c.setopt(pycurl.URL, "https://api.amazon.com/auth/o2/tokeninfo?access_token=" + urllib.quote_plus(access_token))
-    c.setopt(pycurl.SSL_VERIFYPEER, 1)
-    c.setopt(pycurl.WRITEFUNCTION, b.write)
-
-    c.perform()
-    d = json.loads(b.getvalue())
-
-    if d['aud'] != 'YOUR-CLIENT-ID' :
-    # the access token does not belong to us
-        raise BaseException("Invalid Token")
-
-    # exchange the access token for user profile
-    b = io.StringIO.StringIO()
-
-    c = pycurl.Curl()
-    c.setopt(pycurl.URL, "https://api.amazon.com/user/profile")
-    c.setopt(pycurl.HTTPHEADER, ["Authorization: bearer " + access_token])
-    c.setopt(pycurl.SSL_VERIFYPEER, 1)
-    c.setopt(pycurl.WRITEFUNCTION, b.write)
-
-    c.perform()
-    d = json.loads(b.getvalue())
-    return d
