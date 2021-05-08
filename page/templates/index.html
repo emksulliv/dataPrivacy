@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 {% load socialaccount %}
 <html>
 <head>
@@ -9,22 +9,46 @@
     <title>page</title>
 </head>
 <body style="background-color:#e9ecef;">
+    <!-- Facebook SDK Async load -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '316505899897709',
+                cookie: true,
+                xfbml: true,
+                version: 'v10.0'
+            });
 
-    <!--Load the Login with Amazon SDK-->
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=316505899897709&autoLogAppEvents=1" nonce="1WLBf2Ph"></script>
+
+    <!-- Amazon SDK load -->
     <div id="amazon-root"></div>
-        <script type="text/javascript">
+    <script type="text/javascript">
 
-            window.onAmazonLoginReady = function() {
+        window.onAmazonLoginReady = function () {
             amazon.Login.setClientId('amzn1.application-oa2-client.85649ad3188a4224bdac77cdf87ea029');
-            };
-            (function(d) {
+        };
+        (function (d) {
             var a = d.createElement('script'); a.type = 'text/javascript';
             a.async = true; a.id = 'amazon-login-sdk';
             a.src = 'https://assets.loginwithamazon.com/sdk/na/login1.js';
             d.getElementById('amazon-root').appendChild(a);
-            })(document);
-        </script>
-    
+        })(document);
+    </script>
+
     <!--the body of the page, this will contain all the stuff we SEE-->
     <header>
         <div class="collapse bg-dark" id="navbarHeader">
@@ -62,21 +86,7 @@
         </div>
     </header>
 
-      <div id="amazon-root"></div>
-        <script type="text/javascript">
-
-            window.onAmazonLoginReady = function() {
-            amazon.Login.setClientId('amzn1.application-oa2-client.85649ad3188a4224bdac77cdf87ea029');
-            };
-            (function(d) {
-            var a = d.createElement('script'); a.type = 'text/javascript';
-            a.async = true; a.id = 'amazon-login-sdk';
-            a.src = 'https://assets.loginwithamazon.com/sdk/na/login1.js';
-            d.getElementById('amazon-root').appendChild(a);
-            })(document);
-        </script>
-
-    <main role="main"  style="background-color:#e9ecef;">
+    <main role="main" style="background-color:#e9ecef;">
         <!-- the style part of section modifying height will bring the background to the bottom -->
         <section class="jumbotron text-center" style="height:100vh;">
             <!-- inclusion of -full-bg will lengthen bootstrap bg of jumbotron to full length of page -->
@@ -88,24 +98,26 @@
                 <button type="button" class="btn btn-outline-info my-2" data-toggle="modal" data-target="#myModal">Learn More</button>
             </p>
             <!-- SAMPLE ON GOOGLE BUTTON(takes us to google.com -> meant to show how to link a URL here) -->
-            <a href="{% url 'script' %}" class="btn btn-light my-2">Twitter</a>
-            <a href="{% provider_login_url "google" %}"class="btn btn-light my-2">Google</a>
-            <a href="#" class="btn btn-light my-2">Facebook</a>
-            <a href="#" id="LoginWithAmazon" class="btn btn-light my-2">Amazon</a>
-            <a href="{% url 'script' %}" class="btn btn-outline-dark my-2"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
-                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
-              </svg></a>
+            <a href="{% url 'script' %}" class="btn btn-outline-dark my-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                    <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                </svg>
+            </a>
             <a href="{% provider_login_url "google" %}" class="btn btn-outline-dark my-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
-                <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
-                </svg></a>
-            <a href="#" class="btn btn-outline-dark my-2"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-              </svg></a>
-            <a href="#" class="btn btn-outline-dark my-2"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.052-.872-1.238-1.276-1.814-2.106-1.734 1.767-2.962 2.297-5.209 2.297-2.66 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.095v-.41c0-.753.06-1.642-.383-2.294-.385-.579-1.124-.82-1.775-.82-1.205 0-2.277.618-2.54 1.897-.054.285-.261.567-.549.582l-3.061-.333c-.259-.056-.548-.266-.472-.66.704-3.716 4.06-4.838 7.066-4.838 1.537 0 3.547.41 4.758 1.574 1.538 1.436 1.392 3.352 1.392 5.438v4.923c0 1.481.616 2.13 1.192 2.929.204.287.247.63-.01.839-.647.541-1.794 1.537-2.423 2.099l-.008-.007zm3.559 1.988c-2.748 1.472-5.735 2.181-8.453 2.181-4.027 0-7.927-1.393-11.081-3.706-.277-.202-.481.154-.251.416 2.925 3.326 6.786 5.326 11.076 5.326 3.061 0 6.614-1.214 9.066-3.494.406-.377.058-.945-.357-.723zm.67 2.216c-.091.227.104.32.31.147 1.339-1.12 1.685-3.466 1.411-3.804-.272-.336-2.612-.626-4.04.377-.22.154-.182.367.062.337.805-.096 2.595-.312 2.913.098.319.41-.355 2.094-.656 2.845z" fill-rule="evenodd" clip-rule="evenodd"/></svg></a>
+                    <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z" />
+                </svg>
+            </a>
+
+            <a href="#" id="LoginWithFacebook" class="btn btn-outline-dark my-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                </svg>
+            </a>
+            <a href="#" id="LoginWithAmazon" class="btn btn-outline-dark my-2"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.052-.872-1.238-1.276-1.814-2.106-1.734 1.767-2.962 2.297-5.209 2.297-2.66 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.095v-.41c0-.753.06-1.642-.383-2.294-.385-.579-1.124-.82-1.775-.82-1.205 0-2.277.618-2.54 1.897-.054.285-.261.567-.549.582l-3.061-.333c-.259-.056-.548-.266-.472-.66.704-3.716 4.06-4.838 7.066-4.838 1.537 0 3.547.41 4.758 1.574 1.538 1.436 1.392 3.352 1.392 5.438v4.923c0 1.481.616 2.13 1.192 2.929.204.287.247.63-.01.839-.647.541-1.794 1.537-2.423 2.099l-.008-.007zm3.559 1.988c-2.748 1.472-5.735 2.181-8.453 2.181-4.027 0-7.927-1.393-11.081-3.706-.277-.202-.481.154-.251.416 2.925 3.326 6.786 5.326 11.076 5.326 3.061 0 6.614-1.214 9.066-3.494.406-.377.058-.945-.357-.723zm.67 2.216c-.091.227.104.32.31.147 1.339-1.12 1.685-3.466 1.411-3.804-.272-.336-2.612-.626-4.04.377-.22.154-.182.367.062.337.805-.096 2.595-.312 2.913.098.319.41-.355 2.094-.656 2.845z" fill-rule="evenodd" clip-rule="evenodd" /></svg></a>
 
         </section>
-            
+
     </main>
 
     <!-- Modal -->
@@ -164,27 +176,87 @@
         </div>
     </div>
 
+    <!-- Facebook login modal -->
+    <div id="facebookLogin" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal Content -->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Your Facebook information!</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <h5>Your data:</h5>
+                    <div class="container-sm">
+                        <p class="font-weight-light" id="facebookData"></p>
+                    </div>
+                    <h5>THIS IS NOT COMPREHENSIVE</h5>
+                    <div class="container-sm">
+                        Facebook has a very involved permissions system. <br/>
+                        When you log in with facebook, read CAREFULLY what permissions you are giving them. <br/>
+                        If, for example, the permissions window asks you who your friends are and has permissions to get photos and posts, it can get a lot of THEIR photos and posts as well as yours.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Amazon login modal -->
+    <div id="amazonLogin" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal Content -->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Your Amazon information!</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <h5>Your data:</h5>
+                    <div class="container-sm">
+                        <p class="font-weight-light" id="amazonData"></p>
+                    </div>
+                    <div class="container-sm">
+                        Amazon doesn't like sharing that much data with third party apps, which is a good thing! <br/>
+                        However, remember that Amazon still stores things like your browsing history internally, even if they don't share it. <br/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Optional JavaScript -->
     <script type="text/javascript">
-        document.getElementById('LoginWithAmazon').onclick = function() {
-            options = {response_type: 'code', scope: 'profile', pkce: true};
-            
-            amazon.Login.authorize(options, function(response) {
-                if ( response.error ) {
+        document.getElementById('LoginWithAmazon').onclick = function () {
+            options = { response_type: 'code', scope: 'profile', pkce: true };
+
+            amazon.Login.authorize(options, function (response) {
+                if (response.error) {
                     alert('oauth error ' + response.error);
                     return;
                 }
                 //window.console.log(response)
-                amazon.Login.retrieveToken(response.code, function(response) {
-                    if ( response.error ) {
+                amazon.Login.retrieveToken(response.code, function (response) {
+                    if (response.error) {
                         alert('oauth error ' + response.error);
                         return;
                     }
                     //alert('Access Token: ' + response.access_token);
-                    amazon.Login.retrieveProfile(response.access_token, function(response) {
-                        if ( response.success ) {
-                            alert('Your name is: ' + response.profile.Name + '\nYour e-mail address is: ' + response.profile.PrimaryEmail + '\nYour unique ID is: ' + response.profile.CustomerId);
-                
+                    amazon.Login.retrieveProfile(response.access_token, function (response) {
+                        if (response.success) {
+                            //alert('Your name is: ' + response.profile.Name + '\nYour e-mail address is: ' + response.profile.PrimaryEmail + '\nYour unique ID is: ' + response.profile.CustomerId);
+                            document.getElementById('amazonData').innerHTML = "ID: " +
+                                response.profile.CustomerId +"<BR/>Name: " + response.profile.Name + "<BR/>Email: " + response.profile.PrimaryEmail;
+                            $('#amazonLogin').modal('show');
                         }
                     });
                 });
@@ -194,6 +266,61 @@
                 'http://127.0.0.1:8000/');
             return false;*/
         };
+    </script>
+    <!-- Facebook login script -->
+    <script type="text/javascript">
+        document.getElementById('LoginWithFacebook').onclick = function () {
+            checkLoginState();
+        }
+
+        function changeData(callback) {
+            console.log('Fetching user information...');
+            FB.api(
+                '/me',
+                'GET',
+                { "fields": "id,name,picture" },
+                function (response) {
+                    document.getElementById('facebookData').innerHTML = "ID: " +
+                        response.id +"<BR/>Name: " + response.name + "<BR/>Profile Picture: ";
+                    var img = document.createElement('img');
+                    img.src = response.picture.data.url;
+                    document.getElementById('facebookData').appendChild(img);
+
+                    callback(response);
+                }
+            );
+        }
+
+        function showData(response) {
+            $('#facebookLogin').modal('show');
+        }
+
+        function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            if (response.status === 'connected') {
+                changeData(showData);
+
+            } else {
+                FB.login(
+                    function (response) {
+                        console.log(response);
+                        changeData(showData);
+                    },
+                    {
+                        scope: 'public_profile,email'
+                    }
+                );
+            }
+
+
+        }
+
+        function checkLoginState() {
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        }
     </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
