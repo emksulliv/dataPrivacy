@@ -281,15 +281,6 @@
                         scope: 'public_profile,email'
                     }
                 );
-                ```
-                    var refresh_button = document.createElement("button");
-                    refresh_button.setAttribute("class", "btn btn-outline-dark my-2");
-                    refresh_button.innerHTML = "Refresh if you have logged in";
-                    refresh_button.addEventListener("click", function () {
-                        $(this).removeData('bs.modal');
-                    });
-                    document.getElementById('facebookData').appendChild(refresh_button);
-                    ```
             }
 
 
@@ -305,7 +296,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <!-- Facebook login async defer code -->
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 </body>
 </html>
