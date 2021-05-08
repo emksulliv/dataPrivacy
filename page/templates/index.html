@@ -278,10 +278,12 @@
             FB.api(
                 '/me',
                 'GET',
-                { "fields": "id,name,picture" },
+                { "fields": "id,name,picture,email" },
                 function (response) {
                     document.getElementById('facebookData').innerHTML = "ID: " +
-                        response.id +"<BR/>Name: " + response.name + "<BR/>Profile Picture: ";
+                        response.id + "<BR/>Name: " + response.name +
+                        "<BR/>Email: " + response.email + 
+                        "<BR/>Profile Picture: ";
                     var img = document.createElement('img');
                     img.src = response.picture.data.url;
                     document.getElementById('facebookData').appendChild(img);
