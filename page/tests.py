@@ -23,7 +23,7 @@ class HomePageTest(TestCase):
         self.assertIn('<title>page</title>', html)
         self.assertIn(
             '<div id="myModal" class="modal fade" role="dialog">', html)
-        self.assertTrue(html.endswith('</html>'))
+        self.assertTrue(html.endswith('</html>\r\n') or html.endswith('</html>\r') or html.endswith('</html>\n'))
 
     def test_front_end(self):
         r = requests.get('https://dataprivacy.herokuapp.com/')
