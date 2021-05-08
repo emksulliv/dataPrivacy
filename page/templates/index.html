@@ -206,6 +206,34 @@
         </div>
     </div>
 
+    <!-- Amazon login modal -->
+    <div id="amazonLogin" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal Content -->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Your Amazon information!</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <h5>Your data:</h5>
+                    <div class="container-sm">
+                        <p class="font-weight-light" id="amazonData"></p>
+                    </div>
+                    <div class="container-sm">
+                        Amazon doesn't like sharing that much data with third party apps, which is a good thing! <br/>
+                        However, remember that Amazon still stores things like your browsing history internally, even if they don't share it. <br/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Optional JavaScript -->
     <script type="text/javascript">
         document.getElementById('LoginWithAmazon').onclick = function () {
@@ -225,8 +253,10 @@
                     //alert('Access Token: ' + response.access_token);
                     amazon.Login.retrieveProfile(response.access_token, function (response) {
                         if (response.success) {
-                            alert('Your name is: ' + response.profile.Name + '\nYour e-mail address is: ' + response.profile.PrimaryEmail + '\nYour unique ID is: ' + response.profile.CustomerId);
-
+                            //alert('Your name is: ' + response.profile.Name + '\nYour e-mail address is: ' + response.profile.PrimaryEmail + '\nYour unique ID is: ' + response.profile.CustomerId);
+                            document.getElementById('amazonData').innerHTML = "ID: " +
+                                response.profile.CustomerId +"<BR/>Name: " + response.profile.Name + "<BR/>Email: " + response.profile.PrimaryEmail;
+                            $('#amazonLogin').modal('show');
                         }
                     });
                 });

@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
+from page import amazon_auth_script
 from page import twitter_search
 
 """if we make the path 'page/', the webpage will have to be /page/ to reach it
@@ -27,6 +28,8 @@ urlpatterns = [
     path('accounts/profile/', include(('accounts.urls', 'accounts'), namespace='accounts')),
     path('accounts/', include('allauth.urls')),
     url(r'^accounts/', include('allauth.urls')),
+    
+    path('', amazon_auth_script.getAccessToken, name='amzn_auth_script'),
     path('', twitter_search.button),
     path('', twitter_search.search_script, name='script'),
 ]
