@@ -6,7 +6,7 @@ The goal of dataPrivacy is to educate of people using social media sites, and im
 
 ## Heroku Deployed Website:
 
-The Heroku deployed can be found [here](http://dataprivacy.herokuapp.com) This and all future iterations will have completed work shown on this web link.
+The Heroku deployed can be found [here](https://dataprivacy.herokuapp.com) This and all future iterations will have completed work shown on this web link.
 
 ## How to run our app:
 
